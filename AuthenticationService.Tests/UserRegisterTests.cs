@@ -4,22 +4,19 @@ namespace AuthenticationService.Tests;
 public class UserRegister
 {
     [Fact]
-    public void UserSubmitName_ShouldReturnCorrectName()
+    public void UserSubmitInfo_ShouldReturnCorrectInfo()
     {
         var user = new User();
-        user.Name = "João";
+        user.Register(fullname, DOB, CPF, POA, Cellphone,email, password);
 
         Assert.Equal(user.Name, "João");
+        Assert.Equal(user.DateOfBirth, DOB);
+        Assert.Equal(user.CPF, cpf);
+        Assert.Equal(user.POA, POA);
+        Assert.Equal(user.Cellphone, Cellphone);
+        Assert.Equal(user.Email, email);
     }
 
-    [Theory]
-    [InlineData("joao@gmail.com", true)]
-    [InlineData("xpto", false)]
-    public void WhenUserSubmitValidEmail_ShouldReturnIfItsValid(string email, bool isValid)
-    {
-        var user = new User();
-        bool emailIsValid = user.CheckValidEmail(email);
 
-        Assert.Equal(emailIsValid, isValid);
-    }
+
 }

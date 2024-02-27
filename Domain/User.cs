@@ -10,4 +10,12 @@ public class User
     {
     }
 
+    public bool RegisterEmail(string email)
+    {
+        if(!email.Contains("@"))
+            return false;
+        Email = email;
+        return true;
+
+    }
 }
